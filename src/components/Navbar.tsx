@@ -8,14 +8,18 @@ type Props = {}
 
 const Navbar = (props: Props) => {
   return (
-    <div className={styles.navbar}>
-      <h1>Book's Collection</h1>
-      <ul>
-        <li>Home</li>
-        <li>Colleção</li>
-        <li><SearchBar/></li>
-      </ul>
+    <div className={styles.container}>
+      <div className={styles.navbar}>
+        <div className={styles.links}>
+          <h1>Book's Collection</h1>
+          <ul>
+            <li>Home</li>
+            <li>Coleção</li>
+          </ul>
+        </div>
       
+        <SearchBar/>
+      </div>
     </div>
   )
 }

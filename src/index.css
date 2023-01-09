@@ -1,6 +1,13 @@
+:root {
+  --primary: rgb(171, 118, 54);
+  --secondary: rgb(236, 177, 110);
+  --terciary: rgb(23, 14, 2);
+  color: var(--terciary);
+}
+
 body {
   margin: 0;
-  background-color: rgb(235, 166, 117);
+  background-color: var(--primary);
   font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

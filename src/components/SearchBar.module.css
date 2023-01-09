@@ -1,0 +1,19 @@
+.searchbar{
+  border: none;
+  border-radius: 5px;
+  padding: .5rem 2rem;
+  margin-right: 1em;
+  font-size: 16px;
+}
+.search_btn{
+  border: none;
+  border-radius: 5px;
+  padding: .5rem 1rem;
+  font-size: 16px;
+  background-color: var(--secondary);
+  font-weight: bold;
+  transition: 0.2s all;
+}
+.search_btn:hover{
+  transform: scale(1.1);
+}
