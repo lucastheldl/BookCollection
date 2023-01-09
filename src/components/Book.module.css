@@ -1,0 +1,29 @@
+.cardContainer{
+  background-color: rgb(161, 120, 71);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 1em 0 1em;
+  padding: 0 0 1rem;
+  text-align: center;
+}
+.cardContainer img{
+  width: 100%;
+  height: 200px;
+}
+.detail_btn{
+  cursor: pointer;
+  background-color: rgb(255, 176, 57);
+  border: none;
+  padding: 5px 10px;
+  border-radius: .3em;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.2s all;
+}
+.detail_btn:hover{
+  background-color: rgb(255, 228, 189);
+  transform: scale(1.1);
+}
