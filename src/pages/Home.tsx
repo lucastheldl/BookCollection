@@ -5,6 +5,7 @@ import styles from "./Home.module.css"
 
 //components
 import Book from '../components/Book';
+import Navbar from '../components/Navbar';
 
 type Props = {}
 
@@ -12,10 +13,14 @@ const Home = (props: Props) => {
   const [books,setBooks] = useState<any[]>([]);
   const [loading,setLoading] = useState(false);
 
-  const fetchBooks =async () => {
+  const onSearch = (title:string) =>{
+    fetchBooks(title);
+  }
+
+  const fetchBooks =async (title:string) => {
     setLoading(true);
     try {
-      const data = await getBook("pig")
+      const data = await getBook(title)
       setBooks(data.items);
       console.log(data);
       setLoading(false);
@@ -26,10 +31,12 @@ const Home = (props: Props) => {
     }
   }
   useEffect(()=>{
-    fetchBooks();
+    fetchBooks("harry Potter");
   },[])
 
   return (
+    <>
+    <Navbar onSearch = {onSearch}/>
     <div className={styles.container}>
       {loading ? (<p>Carregando...</p>):
        (books.length >0 && books.map((book,index) =>{
@@ -37,6 +44,8 @@ const Home = (props: Props) => {
       }))}
        
     </div>
+    </>
+    
   )
 }
 

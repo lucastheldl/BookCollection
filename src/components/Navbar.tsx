@@ -4,9 +4,12 @@ import styles from "./Navbar.module.css"
 //components
 import SearchBar from './SearchBar'
 
-type Props = {}
+type Props = {
+  onSearch(title:string):void;
+}
 
-const Navbar = (props: Props) => {
+const Navbar = ({onSearch}: Props) => {
+  
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
@@ -18,7 +21,7 @@ const Navbar = (props: Props) => {
           </ul>
         </div>
       
-        <SearchBar/>
+        <SearchBar onSearch={onSearch}/>
       </div>
     </div>
   )
