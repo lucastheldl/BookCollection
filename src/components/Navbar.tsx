@@ -1,6 +1,6 @@
 import React from 'react'
 //css
-import styles from "./Navbar.module.css"
+import styles from "./Navbar.module.scss"
 //components
 import SearchBar from './SearchBar'
 

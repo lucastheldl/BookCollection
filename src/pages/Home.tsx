@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { getBooks,getBook } from '../api'
 //css
-import styles from "./Home.module.css"
+import styles from "./Home.module.scss"
 
 //components
 import Book from '../components/Book';

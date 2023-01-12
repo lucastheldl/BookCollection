@@ -2,6 +2,10 @@
   --primary: rgb(171, 118, 54);
   --secondary: rgb(236, 177, 110);
   --terciary: rgb(23, 14, 2);
+  
+  //$primary : rgb(171, 118, 54);
+  //$secondary : rgb(236, 177, 110);
+  //$terciary : rgb(23, 14, 2);
   color: var(--terciary);
 }
 
@@ -17,3 +21,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+// git commit -m "Refatored css files to scss"

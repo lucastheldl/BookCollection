@@ -1,6 +1,6 @@
 import React from 'react'
 //css
-import styles from "./Book.module.css"
+import styles from "./Book.module.scss"
 
 type Props = {
   book:any

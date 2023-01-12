@@ -1,6 +1,6 @@
 import React,{ChangeEvent, FormEvent, useState} from 'react'
 //css
-import styles from "./SearchBar.module.css"
+import styles from "./SearchBar.module.scss"
 
 type Props = {
   onSearch(title:string):void;

@@ -13,7 +13,7 @@
   background-color: var(--secondary);
   font-weight: bold;
   transition: 0.2s all;
-}
-.search_btn:hover{
-  transform: scale(1.1);
+  ::hover{
+    transform: scale(1.1);
+  }
 }
