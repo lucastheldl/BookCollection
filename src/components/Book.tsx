@@ -4,15 +4,16 @@ import styles from "./Book.module.scss"
 
 type Props = {
   book:any
+  showBookDetails(books:any):void,
 }
 
-const Book = ({book}: Props) => {
+const Book = ({book,showBookDetails}: Props) => {
   let thumb = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail
   return (
     <div className={styles.cardContainer}>
       <img src={thumb}></img>
       <h3>{book.volumeInfo.title}</h3>
-      <button className={styles.detail_btn}>Detalhes</button>
+      <button className={styles.detail_btn} onClick={() =>{showBookDetails(book)}} >Detalhes</button>
     </div>
   )
 }
