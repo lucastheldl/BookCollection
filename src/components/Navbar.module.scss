@@ -1,5 +1,8 @@
 .container{
+  position: fixed;
+  top: 0;
   width: 100%;
+  background-color: var(--primary);
   border-bottom: 1px solid white;
   .navbar{
     display: flex;
@@ -19,7 +22,7 @@
           font-size: 1.5rem;
           transition: 0.2s all;
           cursor: pointer;
-          ::hover{
+          &:hover{
             transform: scale(1.1);
           }
         }

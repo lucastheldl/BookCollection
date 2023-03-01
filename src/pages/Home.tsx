@@ -46,7 +46,7 @@ const Home = (props: Props) => {
     openModal();
   }
   return (
-    <>
+    <div>
     <BookDetailModal book={bookDetail}/>
     <Navbar onSearch = {onSearch}/>
     <div className={styles.container}>
@@ -56,7 +56,7 @@ const Home = (props: Props) => {
       }))}
        
     </div>
-    </>
+    </div>
     
   )
 }

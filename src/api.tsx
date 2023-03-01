@@ -4,7 +4,7 @@ const apiKey = "AIzaSyBBCRwD5hFnLkpOQAUIBqctq7Pb_w4_o6o";
 //return especific book from api
 export const getBook = async (book:string) =>{
   try{
-    const url:string = `https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}&maxResults=40`
+    const url:string = `https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}&maxResults=40&startIndex=${0}`
     const res:any = await fetch(url);
     return await res.json();
 

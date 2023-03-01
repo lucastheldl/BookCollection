@@ -10,10 +10,9 @@ const BookDetailModal = ({book}: Props) => {
 
   const closeModal = (e:React.MouseEvent):void =>{
     const modal = document.querySelector("#Modal")
-    console.log("abrir");
     modal!.classList.add("hide");
   }
-  console.log(book);
+  
   return (
    
     <div id='Modal' className='hide'>

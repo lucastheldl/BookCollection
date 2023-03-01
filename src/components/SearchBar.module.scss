@@ -1,4 +1,5 @@
 .searchbar{
+  position: relative;
   border: none;
   border-radius: 5px;
   padding: .5rem 2rem;
@@ -6,6 +7,7 @@
   font-size: 16px;
 }
 .search_btn{
+  cursor: pointer;
   border: none;
   border-radius: 5px;
   padding: .5rem 1rem;
@@ -13,7 +15,8 @@
   background-color: var(--secondary);
   font-weight: bold;
   transition: 0.2s all;
-  ::hover{
+  &:hover{
     transform: scale(1.1);
+    background-color: rgb(255, 228, 189);
   }
 }

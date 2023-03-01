@@ -6,10 +6,12 @@
   align-items: center;
   justify-content: space-between;
   margin: 1em 1em 0 1em;
+  border: 2.5px solid var(--terciary);
   padding: 0 0 1rem;
   text-align: center;
+  overflow: hidden;
   img{
-    width: 100%;
+    width: auto;
     height: 200px;
   }
   .detail_btn{
@@ -22,7 +24,7 @@
     font-size: 1rem;
     font-weight: bold;
     transition: 0.2s all;
-    ::hover{
+    &:hover{
       background-color: rgb(255, 228, 189);
       transform: scale(1.1);
     }
