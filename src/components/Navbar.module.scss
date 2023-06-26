@@ -18,12 +18,16 @@
         list-style: none;
         align-items: center;
         li {
-          margin-right: 2em;
-          font-size: 1.5rem;
-          transition: 0.2s all;
-          cursor: pointer;
-          &:hover {
-            transform: scale(1.1);
+          button {
+            margin-right: 2em;
+            font-size: 1.5rem;
+            transition: 0.2s all;
+            background: none;
+            border: none;
+            cursor: pointer;
+            &:hover {
+              transform: scale(1.1);
+            }
           }
         }
       }
