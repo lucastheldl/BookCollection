@@ -14,7 +14,14 @@ const BookDetailModal = ({ book }: Props) => {
   const closeModal = (e: React.MouseEvent): void => {
     const modal = document.querySelector("#Modal");
     modal!.classList.add("hide");
+    console.log(book);
   };
+  const descriptionText: string = book.volumeInfo.description;
+  const fixedDescription = descriptionText
+    .replaceAll("<br>", "")
+    .replaceAll("<i>", "")
+    .replaceAll("</i>", "")
+    .replaceAll("<p>", "");
 
   return (
     <div id="Modal" className="hide">
@@ -22,6 +29,11 @@ const BookDetailModal = ({ book }: Props) => {
         <div className={styles.fade}>
           <div className={styles.container}>
             <h2>{book.volumeInfo.title}</h2>
+            <div>
+              <h4>Sinopse:</h4>
+              <p className={styles.description}>{fixedDescription}</p>
+            </div>
+
             <div className={styles.option_container}>
               <button onClick={closeModal} className={styles.btn_close}>
                 Fechar

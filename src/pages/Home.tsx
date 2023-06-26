@@ -45,7 +45,6 @@ const Home = (props: Props) => {
       const result = await Promise.all(promises);
 
       setBooks(result);
-      console.log(result);
       setLoading(false);
     } catch (error: any) {
       console.log("fetchCollectionBooks", error.message);
