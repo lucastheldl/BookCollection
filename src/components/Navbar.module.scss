@@ -1,28 +1,28 @@
-.container{
+.container {
   position: fixed;
   top: 0;
   width: 100%;
   background-color: var(--primary);
   border-bottom: 1px solid white;
-  .navbar{
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
     margin: 0 auto;
-    padding: 1rem 0;
-    .links{
+    padding: 0.5rem 0;
+    .links {
       display: flex;
-      ul{
+      ul {
         display: flex;
         list-style: none;
         align-items: center;
-        li{
+        li {
           margin-right: 2em;
           font-size: 1.5rem;
           transition: 0.2s all;
           cursor: pointer;
-          &:hover{
+          &:hover {
             transform: scale(1.1);
           }
         }
