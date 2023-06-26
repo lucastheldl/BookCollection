@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getBook } from "../api";
+import { getBook, getBookById } from "../api";
 //css
 import styles from "./Home.module.scss";
 
@@ -24,7 +24,6 @@ const Home = (props: Props) => {
     try {
       const data = await getBook(title);
       setBooks(data.items);
-      console.log(data);
       setLoading(false);
     } catch (error: any) {
       console.log("fetchBooks", error.message);
@@ -36,9 +35,23 @@ const Home = (props: Props) => {
     fetchBooks("harry Potter");
   }, []);
 
-  const setCollectionBooks = (data: any) => {
-    setBooks(data.items);
-  };
+  async function fetchCollectionBooks(books: string[]) {
+    setLoading(true);
+
+    try {
+      const promises = books.map(async (book) => {
+        return getBookById(book);
+      });
+      const result = await Promise.all(promises);
+
+      setBooks(result);
+      console.log(result);
+      setLoading(false);
+    } catch (error: any) {
+      console.log("fetchCollectionBooks", error.message);
+      setLoading(false);
+    }
+  }
 
   const openModal = () => {
     const modal = document.querySelector("#Modal");
@@ -52,7 +65,11 @@ const Home = (props: Props) => {
   return (
     <main>
       <BookDetailModal book={bookDetail} />
-      <Navbar onSearch={onSearch} setCollectionBooks={setCollectionBooks} />
+      <Navbar
+        onSearch={onSearch}
+        fetchBooks={fetchBooks}
+        fetchCollectionBooks={fetchCollectionBooks}
+      />
       <div className={styles.container}>
         {loading ? (
           <p>Carregando...</p>

@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useState } from "react";
 
 interface BookContextType {
   bookCollection: string[];
-  setCollectionBooks: (books: string[]) => void;
+  setBookinCollection: (books: string) => void;
   //setbookCollection: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
@@ -15,12 +15,16 @@ interface BookCollectionProps {
 export function FavoriteContextProvider({ children }: BookCollectionProps) {
   const [bookCollection, setBookCollection] = useState<string[]>([]);
 
-  function setCollectionBooks(books: string[]) {
-    setBookCollection(books);
+  function setBookinCollection(book: string) {
+    if (!bookCollection.includes(book)) {
+      setBookCollection((prevState) => [...prevState, book]);
+    } else {
+      setBookCollection((prevState) => prevState.filter((b) => b !== book));
+    }
   }
 
   return (
-    <FavoriteContext.Provider value={{ bookCollection, setCollectionBooks }}>
+    <FavoriteContext.Provider value={{ bookCollection, setBookinCollection }}>
       {children}
     </FavoriteContext.Provider>
   );

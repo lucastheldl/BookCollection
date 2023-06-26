@@ -24,6 +24,11 @@
   text-align: center;
   padding: 2em;
 
+  .option_container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   .btn_close {
     background-color: var(--terciary);
     color: var(--primary);
@@ -37,6 +42,15 @@
     &:hover {
       background-color: var(--primary);
       color: var(--terciary);
+    }
+  }
+  .btn_bookmark {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s;
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
