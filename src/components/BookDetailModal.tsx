@@ -9,6 +9,7 @@ type Props = {
 };
 
 const BookDetailModal = ({ book }: Props) => {
+  const collectionKey = "bColl";
   const { bookCollection, setBookinCollection } = useContext(FavoriteContext);
 
   const closeModal = (e: React.MouseEvent): void => {
@@ -16,7 +17,7 @@ const BookDetailModal = ({ book }: Props) => {
     modal!.classList.add("hide");
     console.log(book);
   };
-  const descriptionText: string = book.volumeInfo.description;
+  const descriptionText: string = book ? book.volumeInfo.description : "";
   const fixedDescription = descriptionText
     .replaceAll("<br>", "")
     .replaceAll("<i>", "")
