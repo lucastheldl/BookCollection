@@ -14,6 +14,7 @@ const Home = () => {
   const [books, setBooks] = useState<any[]>([]);
   const [bookDetail, setbookDetail] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState<string>("Livros");
 
   const { bookCollection, setBookinCollection, loadBooksinCollection } =
     useContext(FavoriteContext);
@@ -24,6 +25,7 @@ const Home = () => {
 
   const fetchBooks = async (title: string) => {
     setLoading(true);
+    setPage("Livros");
     try {
       const data = await getBook(title);
       setBooks(data.items);
@@ -48,7 +50,7 @@ const Home = () => {
 
   async function fetchCollectionBooks(books: string[]) {
     setLoading(true);
-
+    setPage("Coleção");
     try {
       const promises = books.map(async (book) => {
         return getBookById(book);
@@ -90,6 +92,7 @@ const Home = () => {
         fetchBooks={fetchBooks}
         fetchCollectionBooks={fetchCollectionBooks}
       />
+      <h1 className={styles.title}>{page}</h1>
       <div className={styles.container}>
         {loading ? (
           <p>Carregando...</p>
