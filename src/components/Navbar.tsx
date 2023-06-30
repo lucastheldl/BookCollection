@@ -1,30 +1,40 @@
-import React from 'react'
+import React, { useContext } from "react";
 //css
-import styles from "./Navbar.module.css"
+import { FavoriteContext } from "../context/FavoriteContext";
+import styles from "./Navbar.module.scss";
 //components
-import SearchBar from './SearchBar'
+import SearchBar from "./SearchBar";
 
 type Props = {
-  onSearch(title:string):void;
-}
+  onSearch(title: string): void;
+  fetchCollectionBooks: (books: string[]) => void;
+  fetchBooks: (title: string) => void;
+};
 
-const Navbar = ({onSearch}: Props) => {
-  
+const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
+  const { bookCollection } = useContext(FavoriteContext);
+
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
         <div className={styles.links}>
           <h1>Book's Collection</h1>
           <ul>
-            <li>Home</li>
-            <li>Coleção</li>
+            <li>
+              <button onClick={() => fetchBooks("harry potter")}>Livros</button>
+            </li>
+            <li>
+              <button onClick={() => fetchCollectionBooks(bookCollection)}>
+                Coleção
+              </button>
+            </li>
           </ul>
         </div>
-      
-        <SearchBar onSearch={onSearch}/>
+
+        <SearchBar onSearch={onSearch} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

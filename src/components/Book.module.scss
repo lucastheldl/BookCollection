@@ -1,0 +1,32 @@
+.cardContainer {
+  background-color: var(--secondary);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 250px;
+  margin: 1em 1em 0 1em;
+  border: 2.5px solid var(--terciary);
+  padding: 0 0 1rem;
+  text-align: center;
+  overflow: hidden;
+  img {
+    width: auto;
+    height: 200px;
+  }
+  .detail_btn {
+    cursor: pointer;
+    background-color: var(--primary);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 0.3em;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.2s all;
+    &:hover {
+      background-color: rgb(255, 228, 189);
+      transform: scale(1.1);
+    }
+  }
+}

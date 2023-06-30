@@ -1,17 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import { FavoriteContextProvider } from "./context/FavoriteContext";
 
 //pages
-import Home from './pages/Home';
-
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <FavoriteContextProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </FavoriteContextProvider>
   );
 }
 

@@ -1,20 +1,29 @@
-import React from 'react'
+import React from "react";
 //css
-import styles from "./Book.module.css"
+import styles from "./Book.module.scss";
 
 type Props = {
-  book:any
-}
+  book: any;
+  showBookDetails(books: any): void;
+};
 
-const Book = ({book}: Props) => {
-  let thumb = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail
+const Book = ({ book, showBookDetails }: Props) => {
+  let thumb =
+    book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail;
   return (
     <div className={styles.cardContainer}>
-      <img src={thumb}></img>
+      <img src={thumb} loading="lazy" />
       <h3>{book.volumeInfo.title}</h3>
-      <button className={styles.detail_btn}>Detalhes</button>
+      <button
+        className={styles.detail_btn}
+        onClick={() => {
+          showBookDetails(book);
+        }}
+      >
+        Detalhes
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Book
+export default Book;
