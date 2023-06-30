@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getBook, getBookById } from "../api";
 //css
 import styles from "./Home.module.scss";
@@ -7,13 +7,16 @@ import styles from "./Home.module.scss";
 import Book from "../components/Book";
 import Navbar from "../components/Navbar";
 import BookDetailModal from "../components/BookDetailModal";
+import { FavoriteContext } from "../context/FavoriteContext";
 
-type Props = {};
-
-const Home = (props: Props) => {
+const Home = () => {
+  const collectionKey = "bColl";
   const [books, setBooks] = useState<any[]>([]);
   const [bookDetail, setbookDetail] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+
+  const { bookCollection, setBookinCollection, loadBooksinCollection } =
+    useContext(FavoriteContext);
 
   const onSearch = (title: string) => {
     fetchBooks(title);
@@ -30,9 +33,17 @@ const Home = (props: Props) => {
       setLoading(false);
     }
   };
+  const loadBooks = () => {
+    const storedBooks = window.localStorage.getItem(collectionKey);
+    const books = storedBooks ? JSON.parse(storedBooks) : null;
+    loadBooksinCollection(books);
+  };
 
   useEffect(() => {
     fetchBooks("harry Potter");
+    if (window.localStorage.getItem(collectionKey)) {
+      loadBooks();
+    }
   }, []);
 
   async function fetchCollectionBooks(books: string[]) {
@@ -52,6 +63,12 @@ const Home = (props: Props) => {
     }
   }
 
+  const addBookToCollection = (id: string) => {
+    const updatedList = [...bookCollection, id];
+    setBookinCollection(id);
+    window.localStorage.setItem(collectionKey, JSON.stringify(updatedList));
+  };
+
   const openModal = () => {
     const modal = document.querySelector("#Modal");
     modal!.classList.remove("hide");
@@ -61,9 +78,13 @@ const Home = (props: Props) => {
 
     openModal();
   };
+
   return (
     <main>
-      <BookDetailModal book={bookDetail} />
+      <BookDetailModal
+        book={bookDetail}
+        setBookinCollection={addBookToCollection}
+      />
       <Navbar
         onSearch={onSearch}
         fetchBooks={fetchBooks}

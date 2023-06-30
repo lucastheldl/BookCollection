@@ -6,11 +6,11 @@ import { FavoriteContext } from "../context/FavoriteContext";
 
 type Props = {
   book: any;
+  setBookinCollection: (id: string) => void;
 };
 
-const BookDetailModal = ({ book }: Props) => {
-  const collectionKey = "bColl";
-  const { bookCollection, setBookinCollection } = useContext(FavoriteContext);
+const BookDetailModal = ({ book, setBookinCollection }: Props) => {
+  const { bookCollection } = useContext(FavoriteContext);
 
   const closeModal = (e: React.MouseEvent): void => {
     const modal = document.querySelector("#Modal");
@@ -39,6 +39,7 @@ const BookDetailModal = ({ book }: Props) => {
               <button onClick={closeModal} className={styles.btn_close}>
                 Fechar
               </button>
+
               <button
                 onClick={() => setBookinCollection(book.id)}
                 className={styles.btn_bookmark}

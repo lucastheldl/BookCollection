@@ -3,6 +3,7 @@ import React, { ReactNode, createContext, useState } from "react";
 interface BookContextType {
   bookCollection: string[];
   setBookinCollection: (books: string) => void;
+  loadBooksinCollection: (books: string[]) => void;
   //setbookCollection: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
@@ -22,9 +23,14 @@ export function FavoriteContextProvider({ children }: BookCollectionProps) {
       setBookCollection((prevState) => prevState.filter((b) => b !== book));
     }
   }
+  function loadBooksinCollection(books: string[]) {
+    setBookCollection(books);
+  }
 
   return (
-    <FavoriteContext.Provider value={{ bookCollection, setBookinCollection }}>
+    <FavoriteContext.Provider
+      value={{ bookCollection, setBookinCollection, loadBooksinCollection }}
+    >
       {children}
     </FavoriteContext.Provider>
   );
