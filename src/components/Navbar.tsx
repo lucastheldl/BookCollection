@@ -18,7 +18,7 @@ const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
     <div className={styles.container}>
       <div className={styles.navbar}>
         <div className={styles.links}>
-          <h1>Book's Collection</h1>
+          <h1>Book Collection</h1>
           <ul>
             <li>
               <button onClick={() => fetchBooks("harry potter")}>Livros</button>

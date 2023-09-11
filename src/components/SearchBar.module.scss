@@ -1,21 +1,25 @@
-.searchbar{
+.searchbar {
   position: relative;
   border: none;
   border-radius: 5px;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   margin-right: 1em;
   font-size: 16px;
+
+  &:focus {
+    outline-color: var(--terciary);
+  }
 }
-.search_btn{
+.search_btn {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 16px;
   background-color: var(--secondary);
   font-weight: bold;
   transition: 0.2s all;
-  &:hover{
+  &:hover {
     transform: scale(1.1);
     background-color: rgb(255, 228, 189);
   }

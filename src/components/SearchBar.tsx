@@ -1,32 +1,42 @@
-import React,{ChangeEvent, FormEvent, useState} from 'react'
+import React, { ChangeEvent, FormEvent, useState } from "react";
 //css
-import styles from "./SearchBar.module.scss"
+import styles from "./SearchBar.module.scss";
 
 type Props = {
-  onSearch(title:string):void;
-}
+  onSearch(title: string): void;
+};
 
-const SearchBar = ({onSearch}: Props) => {
+const SearchBar = ({ onSearch }: Props) => {
   const [search, setSearch] = useState<string>("");
 
-  const handleSubmit =(e:FormEvent<HTMLFormElement>)=>{
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSearch(search);  
+    if (!search) {
+      return;
+    }
+    onSearch(search);
     setSearch("");
-  }
-  const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
-
+  };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     if (e.target.value.length === 0) {
       //onSearch(undefined);
     }
-  }
+  };
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" className={styles.searchbar} placeholder="Buscar um livro..." value={search} onChange={handleChange}></input>
-      <button type='submit' className={styles.search_btn}>Buscar</button>
+      <input
+        type="text"
+        className={styles.searchbar}
+        placeholder="Buscar um livro..."
+        value={search}
+        onChange={handleChange}
+      ></input>
+      <button type="submit" className={styles.search_btn}>
+        Buscar
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

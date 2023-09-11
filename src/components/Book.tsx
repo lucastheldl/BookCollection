@@ -1,6 +1,7 @@
-import React from "react";
 //css
 import styles from "./Book.module.scss";
+//image
+import logo from "../assets/book.avif";
 
 type Props = {
   book: any;
@@ -8,11 +9,12 @@ type Props = {
 };
 
 const Book = ({ book, showBookDetails }: Props) => {
-  let thumb =
-    book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail;
+  let thumb = book.volumeInfo.imageLinks
+    ? book.volumeInfo.imageLinks.smallThumbnail
+    : logo;
   return (
     <div className={styles.cardContainer}>
-      <img src={thumb} loading="lazy" />
+      <img src={thumb} loading="lazy" alt="" />
       <h3>{book.volumeInfo.title}</h3>
       <button
         className={styles.detail_btn}
