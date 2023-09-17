@@ -8,6 +8,7 @@ import Book from "../components/Book";
 import Navbar from "../components/Navbar";
 import BookDetailModal from "../components/BookDetailModal";
 import { FavoriteContext } from "../context/FavoriteContext";
+import { Pagination } from "../components/Pagination";
 
 const Home = () => {
   const collectionKey = "bColl";
@@ -105,6 +106,7 @@ const Home = () => {
           })
         )}
       </div>
+      <Pagination />
     </main>
   );
 };

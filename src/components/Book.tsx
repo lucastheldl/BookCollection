@@ -21,6 +21,7 @@ const Book = ({ book, showBookDetails }: Props) => {
         onClick={() => {
           showBookDetails(book);
         }}
+        disabled={!book.volumeInfo.description}
       >
         Detalhes
       </button>
