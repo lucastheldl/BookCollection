@@ -1,9 +1,9 @@
 const key = process.env.REACT_APP_API_KEY;
 
 //return especific book from api
-export const getBook = async (book: string) => {
+export const getBook = async (book: string, index: number) => {
   try {
-    const url: string = `https://www.googleapis.com/books/v1/volumes?q=${book}&key=${key}&maxResults=40&startIndex=${0}`;
+    const url: string = `https://www.googleapis.com/books/v1/volumes?q=${book}&key=${key}&maxResults=40&startIndex=${index}`;
     const res: any = await fetch(url);
     return await res.json();
   } catch (error: any) {

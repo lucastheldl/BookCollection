@@ -14,22 +14,29 @@ const Home = () => {
   const collectionKey = "bColl";
   const [books, setBooks] = useState<any[]>([]);
   const [bookDetail, setbookDetail] = useState<any>(null);
+  const [bookTitle, setBookTitle] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState<string>("Livros");
+  const [currentPage, setCurrentPages] = useState<number>(0);
+  const [totalPage, setTotalPage] = useState(0);
 
   const { bookCollection, setBookinCollection, loadBooksinCollection } =
     useContext(FavoriteContext);
 
   const onSearch = (title: string) => {
     fetchBooks(title);
+    setBookTitle(title);
   };
 
   const fetchBooks = async (title: string) => {
     setLoading(true);
     setPage("Livros");
     try {
-      const data = await getBook(title);
+      const data = await getBook(title, 40 * currentPage);
       setBooks(data.items);
+      setTotalPage(Math.ceil(data.totalItems / 40));
+      console.log(data);
+
       setLoading(false);
     } catch (error: any) {
       console.log("fetchBooks", error.message);
@@ -42,13 +49,6 @@ const Home = () => {
     loadBooksinCollection(books);
   };
 
-  useEffect(() => {
-    fetchBooks("harry Potter");
-    if (window.localStorage.getItem(collectionKey)) {
-      loadBooks();
-    }
-  }, []);
-
   async function fetchCollectionBooks(books: string[]) {
     setLoading(true);
     setPage("Coleção");
@@ -57,7 +57,7 @@ const Home = () => {
         return getBookById(book);
       });
       const result = await Promise.all(promises);
-
+      setTotalPage(Math.ceil(result.length / 40));
       setBooks(result);
       setLoading(false);
     } catch (error: any) {
@@ -81,6 +81,29 @@ const Home = () => {
 
     openModal();
   };
+
+  const leftClick = async () => {
+    if (currentPage > 0 && !loading) {
+      setCurrentPages((prev) => prev - 1);
+    }
+  };
+  const rightClick = () => {
+    if (currentPage !== totalPage && !loading) {
+      setCurrentPages((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    fetchBooks("Javascript");
+    setBookTitle("Javascript");
+    if (window.localStorage.getItem(collectionKey)) {
+      loadBooks();
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBooks(bookTitle);
+  }, [currentPage]);
 
   return (
     <main>
@@ -106,7 +129,12 @@ const Home = () => {
           })
         )}
       </div>
-      <Pagination />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPage}
+        leftClick={leftClick}
+        rightClick={rightClick}
+      />
     </main>
   );
 };

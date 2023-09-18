@@ -21,7 +21,7 @@ const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
           <h1>Book Collection</h1>
           <ul>
             <li>
-              <button onClick={() => fetchBooks("harry potter")}>Livros</button>
+              <button onClick={() => fetchBooks("Javascript")}>Livros</button>
             </li>
             <li>
               <button onClick={() => fetchCollectionBooks(bookCollection)}>
