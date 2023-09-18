@@ -17,7 +17,7 @@ export const getBookById = async (book: string) => {
     const res: any = await fetch(url);
     return await res.json();
   } catch (error: any) {
-    console.log("GetAllBooks", error.message);
+    console.log("GetBookById", error.message);
   }
 };
 

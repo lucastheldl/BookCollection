@@ -51,6 +51,7 @@ const Home = () => {
 
   async function fetchCollectionBooks(books: string[]) {
     setLoading(true);
+    setCurrentPages(1);
     setPage("Coleção");
     try {
       const promises = books.map(async (book) => {

@@ -14,7 +14,7 @@
     font-weight: bold;
     font-size: medium;
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: rgb(255, 228, 189);
       transition: all 0.2s;
 
