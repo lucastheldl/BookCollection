@@ -17,7 +17,7 @@ const Home = () => {
   const [bookTitle, setBookTitle] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState<string>("Livros");
-  const [currentPage, setCurrentPages] = useState<number>(0);
+  const [currentPage, setCurrentPages] = useState<number>(1);
   const [totalPage, setTotalPage] = useState(0);
 
   const { bookCollection, setBookinCollection, loadBooksinCollection } =
@@ -32,7 +32,7 @@ const Home = () => {
     setLoading(true);
     setPage("Livros");
     try {
-      const data = await getBook(title, 40 * currentPage);
+      const data = await getBook(title, 40 * currentPage - 1);
       setBooks(data.items);
       setTotalPage(Math.ceil(data.totalItems / 40));
       console.log(data);
@@ -84,7 +84,7 @@ const Home = () => {
   };
 
   const leftClick = async () => {
-    if (currentPage > 0 && !loading) {
+    if (currentPage > 1 && !loading) {
       setCurrentPages((prev) => prev - 1);
     }
   };

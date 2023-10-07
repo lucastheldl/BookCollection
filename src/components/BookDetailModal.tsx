@@ -32,7 +32,9 @@ const BookDetailModal = ({ book, setBookinCollection }: Props) => {
             <h2>{book.volumeInfo.title}</h2>
             <div>
               <h4>Sinopse:</h4>
-              <p className={styles.description}>{fixedDescription}</p>
+              <div className={styles.scroll}>
+                <p className={styles.description}>{fixedDescription}</p>
+              </div>
             </div>
 
             <div className={styles.option_container}>
