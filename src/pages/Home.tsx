@@ -118,18 +118,23 @@ const Home = () => {
         fetchCollectionBooks={fetchCollectionBooks}
       />
       <h1 className={styles.title}>{page}</h1>
-      <div className={styles.container}>
-        {loading ? (
-          <p>Carregando...</p>
-        ) : (
-          books.length > 0 &&
-          books.map((book, index) => {
-            return (
-              <Book key={index} book={book} showBookDetails={showBookDetails} />
-            );
-          })
-        )}
-      </div>
+
+      {loading ? (
+        <p className={styles.loading}>Carregando...</p>
+      ) : (
+        <div className={styles.container}>
+          {books.length > 0 &&
+            books.map((book, index) => {
+              return (
+                <Book
+                  key={index}
+                  book={book}
+                  showBookDetails={showBookDetails}
+                />
+              );
+            })}
+        </div>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPage}
