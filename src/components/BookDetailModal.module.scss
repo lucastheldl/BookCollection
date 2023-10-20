@@ -16,8 +16,12 @@
   align-items: center;
   z-index: 1;
   transform: translate(-50%, -50%);
-  background-color: var(--secondary);
-  border: 5px solid var(--primary);
+  background-image: linear-gradient(
+    var(--primary),
+    var(--secondary),
+    var(--quaternary)
+  );
+  border: 2px dashed var(--white);
   width: 400px;
   height: 500px;
   border-radius: 1em;
@@ -34,26 +38,28 @@
   }
   .btn_close {
     background-color: var(--terciary);
-    color: var(--primary);
-    font-weight: bold;
+    color: var(--white);
+
+    border: 1px solid transparent;
     font-size: 1rem;
     width: 10rem;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 0.5rem;
-    border: 1px solid var(--terciary);
     cursor: pointer;
+
     &:hover {
-      background-color: var(--primary);
-      color: var(--terciary);
+      border: 1px solid var(--white);
     }
   }
   .btn_bookmark {
+    color: var(--white);
+
     background: none;
     border: none;
     cursor: pointer;
     transition: all 0.1s;
     &:hover {
-      transform: scale(1.1);
+      cursor: pointer;
     }
   }
   .scroll {

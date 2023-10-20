@@ -117,7 +117,7 @@ const Home = () => {
         fetchBooks={fetchBooks}
         fetchCollectionBooks={fetchCollectionBooks}
       />
-      <h1 className={styles.title}>{page}</h1>
+      <h2 className={styles.title}>{page}</h2>
 
       {loading ? (
         <p className={styles.loading}>Carregando...</p>

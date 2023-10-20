@@ -2,31 +2,47 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--primary);
-  border-bottom: 1px solid white;
+  background-image: linear-gradient(
+    to right,
+    var(--terciary),
+    var(--quaternary),
+    var(--terciary)
+  );
+
   .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 90%;
     margin: 0 auto;
-    padding: 0.5rem 0;
+
     .links {
       display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      h1 {
+        font-weight: normal;
+      }
       ul {
         display: flex;
         list-style: none;
         align-items: center;
+
         li {
+          display: flex;
+          justify-content: center;
+
           button {
             margin-right: 2em;
             font-size: 1.5rem;
             transition: 0.2s all;
             background: none;
             border: none;
-            cursor: pointer;
+
+            color: var(--white);
             &:hover {
-              transform: scale(1.1);
+              cursor: pointer;
             }
           }
         }

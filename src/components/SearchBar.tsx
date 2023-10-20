@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 //css
 import styles from "./SearchBar.module.scss";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 
 type Props = {
   onSearch(title: string): void;
@@ -24,7 +25,7 @@ const SearchBar = ({ onSearch }: Props) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.container}>
       <input
         type="text"
         className={styles.searchbar}
@@ -33,7 +34,7 @@ const SearchBar = ({ onSearch }: Props) => {
         onChange={handleChange}
       ></input>
       <button type="submit" className={styles.search_btn}>
-        Buscar
+        <MagnifyingGlass size={26} />
       </button>
     </form>
   );

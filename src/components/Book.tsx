@@ -1,7 +1,7 @@
 //css
 import styles from "./Book.module.scss";
 //image
-import logo from "../assets/book.avif";
+import logo from "../assets/book.png";
 
 type Props = {
   book: any;
@@ -14,7 +14,9 @@ const Book = ({ book, showBookDetails }: Props) => {
     : logo;
   return (
     <div className={styles.cardContainer}>
-      <img src={thumb} loading="lazy" alt="" />
+      <div className={styles.imgContainer}>
+        <img src={thumb} loading="lazy" alt="" />
+      </div>
       <h3>{book.volumeInfo.title}</h3>
       <button
         className={styles.detail_btn}
@@ -23,7 +25,7 @@ const Book = ({ book, showBookDetails }: Props) => {
         }}
         disabled={!book.volumeInfo.description}
       >
-        Detalhes
+        Visualizar descrição
       </button>
     </div>
   );
