@@ -2,6 +2,8 @@
   position: fixed;
   top: 0;
   width: 100%;
+  padding: 0 1rem;
+
   background-image: linear-gradient(
     to right,
     var(--terciary),
@@ -10,11 +12,12 @@
   );
 
   .navbar {
+    position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
 
     .links {
       display: flex;

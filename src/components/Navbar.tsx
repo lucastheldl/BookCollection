@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 //css
 import { FavoriteContext } from "../context/FavoriteContext";
 import styles from "./Navbar.module.scss";
 //components
 import SearchBar from "./SearchBar";
 import { List } from "@phosphor-icons/react";
+import { SideBar } from "./SideBar";
 
 type Props = {
   onSearch(title: string): void;
@@ -14,10 +15,19 @@ type Props = {
 
 const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
   const { bookCollection } = useContext(FavoriteContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function toggleBurguerMenu() {
+    setIsModalOpen(!isModalOpen);
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
+        <SideBar
+          isModalOpen={isModalOpen}
+          toggleBurguerMenu={toggleBurguerMenu}
+        />
         <div className={styles.links}>
           <h1>
             COLEÇÃO
@@ -34,7 +44,7 @@ const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
               </button>
             </li> */}
             <li>
-              <button>
+              <button onClick={toggleBurguerMenu}>
                 <List size={32} />
               </button>
             </li>

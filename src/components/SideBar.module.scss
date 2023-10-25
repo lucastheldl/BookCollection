@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  right: -300px;
+  top: 0;
+
+  height: 100vh;
+  margin: 0 auto;
+  min-width: 200px;
+  padding: 2rem;
+
+  background-image: linear-gradient(
+    var(--terciary),
+    var(--quaternary),
+    var(--terciary)
+  );
+  z-index: 10;
+
+  transition: 0.2s all;
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-left: auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.open {
+  right: 0;
+}

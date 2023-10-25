@@ -11,13 +11,9 @@
 body {
   margin: 0;
   background-color: var(--terciary);
-  font-family: Helvetica, sans-serif;
+  font-family: "Comfortaa", sans-serif, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 // git commit -m "Refatored css files to scss"
