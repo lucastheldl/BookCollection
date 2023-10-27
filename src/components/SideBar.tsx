@@ -1,18 +1,45 @@
-import { CaretCircleDown, X } from "@phosphor-icons/react";
+import { CaretCircleDown, CaretCircleUp, X } from "@phosphor-icons/react";
 import styles from "./SideBar.module.scss";
+import { useState } from "react";
 
 interface SideBarProps {
   isModalOpen: boolean;
   toggleBurguerMenu: () => void;
+  collectionBooks: any[];
 }
-export function SideBar({ isModalOpen, toggleBurguerMenu }: SideBarProps) {
+export function SideBar({
+  isModalOpen,
+  toggleBurguerMenu,
+  collectionBooks,
+}: SideBarProps) {
+  const [isListOpen, setIsListOpen] = useState(false);
+
+  function handleOpenList() {
+    setIsListOpen(!isListOpen);
+  }
+
   return (
     <div className={`${styles.container} ${isModalOpen ? styles.open : ""}`}>
-      <button onClick={toggleBurguerMenu}>
+      <button onClick={toggleBurguerMenu} className={styles.closeBtn}>
         <X size={32} />
       </button>
-      Favoritados
-      <CaretCircleDown />
+      <div>
+        <button className={styles.listBtn} onClick={handleOpenList}>
+          Favoritados
+          {!isListOpen ? (
+            <CaretCircleDown size={20} />
+          ) : (
+            <CaretCircleUp size={20} />
+          )}
+        </button>
+        {isListOpen && (
+          <ul className={styles.list}>
+            {collectionBooks.map((book) => {
+              return <li>{book.volumeInfo.title}</li>;
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

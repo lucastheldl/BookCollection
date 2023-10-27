@@ -20,7 +20,7 @@
 
   transition: 0.2s all;
 
-  button {
+  .closeBtn {
     background-color: transparent;
     border: none;
     color: white;
@@ -28,6 +28,28 @@
     &:hover {
       cursor: pointer;
     }
+  }
+  .listBtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    list-style: none;
+    max-height: 450px;
+    overflow: auto;
   }
 }
 .open {

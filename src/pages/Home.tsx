@@ -49,24 +49,6 @@ const Home = () => {
     loadBooksinCollection(books);
   };
 
-  async function fetchCollectionBooks(books: string[]) {
-    setLoading(true);
-    setCurrentPages(1);
-    setPage("Coleção");
-    try {
-      const promises = books.map(async (book) => {
-        return getBookById(book);
-      });
-      const result = await Promise.all(promises);
-      setTotalPage(Math.ceil(result.length / 40));
-      setBooks(result);
-      setLoading(false);
-    } catch (error: any) {
-      console.log("fetchCollectionBooks", error.message);
-      setLoading(false);
-    }
-  }
-
   const addBookToCollection = (id: string) => {
     const updatedList = [...bookCollection, id];
     setBookinCollection(id);
@@ -115,7 +97,7 @@ const Home = () => {
       <Navbar
         onSearch={onSearch}
         fetchBooks={fetchBooks}
-        fetchCollectionBooks={fetchCollectionBooks}
+        //fetchCollectionBooks={fetchCollectionBooks}
       />
       <h2 className={styles.title}>{page}</h2>
 

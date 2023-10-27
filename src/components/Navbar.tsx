@@ -6,19 +6,38 @@ import styles from "./Navbar.module.scss";
 import SearchBar from "./SearchBar";
 import { List } from "@phosphor-icons/react";
 import { SideBar } from "./SideBar";
+import { getBookById } from "../api";
 
 type Props = {
   onSearch(title: string): void;
-  fetchCollectionBooks: (books: string[]) => void;
   fetchBooks: (title: string) => void;
 };
 
-const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
+const Navbar = ({ onSearch, fetchBooks }: Props) => {
   const { bookCollection } = useContext(FavoriteContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [collectionBooks, setCollectionBooks] = useState<any[]>([]);
 
   function toggleBurguerMenu() {
     setIsModalOpen(!isModalOpen);
+    fetchCollectionBooks(bookCollection);
+  }
+
+  async function fetchCollectionBooks(books: string[]) {
+    //setCurrentPages(1);
+    //setPage("Coleção");
+    try {
+      const promises = books.map(async (book) => {
+        return getBookById(book);
+      });
+      const result = await Promise.all(promises);
+      //setTotalPage(Math.ceil(result.length / 40));
+      setCollectionBooks(result);
+      //setLoading(false);
+    } catch (error: any) {
+      console.log("fetchCollectionBooks", error.message);
+      //setLoading(false);
+    }
   }
 
   return (
@@ -27,6 +46,7 @@ const Navbar = ({ onSearch, fetchBooks, fetchCollectionBooks }: Props) => {
         <SideBar
           isModalOpen={isModalOpen}
           toggleBurguerMenu={toggleBurguerMenu}
+          collectionBooks={collectionBooks}
         />
         <div className={styles.links}>
           <h1>
