@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 //css
 import { FavoriteContext } from "../context/FavoriteContext";
 import styles from "./Navbar.module.scss";
@@ -20,25 +20,27 @@ const Navbar = ({ onSearch, fetchBooks }: Props) => {
 
   function toggleBurguerMenu() {
     setIsModalOpen(!isModalOpen);
-    fetchCollectionBooks(bookCollection);
   }
 
-  async function fetchCollectionBooks(books: string[]) {
-    //setCurrentPages(1);
-    //setPage("Coleção");
-    try {
-      const promises = books.map(async (book) => {
-        return getBookById(book);
-      });
-      const result = await Promise.all(promises);
-      //setTotalPage(Math.ceil(result.length / 40));
-      setCollectionBooks(result);
-      //setLoading(false);
-    } catch (error: any) {
-      console.log("fetchCollectionBooks", error.message);
-      //setLoading(false);
+  useEffect(() => {
+    async function fetchCollectionBooks(books: string[]) {
+      //setCurrentPages(1);
+      //setPage("Coleção");
+      try {
+        const promises = books.map(async (book) => {
+          return getBookById(book);
+        });
+        const result = await Promise.all(promises);
+        //setTotalPage(Math.ceil(result.length / 40));
+        setCollectionBooks(result);
+        //setLoading(false);
+      } catch (error: any) {
+        console.log("fetchCollectionBooks", error.message);
+        //setLoading(false);
+      }
     }
-  }
+    fetchCollectionBooks(bookCollection);
+  }, [bookCollection]);
 
   return (
     <div className={styles.container}>
