@@ -50,10 +50,15 @@
     max-height: 450px;
     max-width: 250px;
     overflow: auto;
-    li {
+    button {
       position: relative;
-      padding: 5px;
-      transition: background-color 1s;
+      padding: 10px;
+      text-align: left;
+
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1rem;
 
       border-radius: 6px;
       overflow: hidden;

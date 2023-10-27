@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getBook, getBookById } from "../api";
+import { getBook } from "../api";
 //css
 import styles from "./Home.module.scss";
 
@@ -97,6 +97,7 @@ const Home = () => {
       <Navbar
         onSearch={onSearch}
         fetchBooks={fetchBooks}
+        showBookDetails={showBookDetails}
         //fetchCollectionBooks={fetchCollectionBooks}
       />
       <h2 className={styles.title}>{page}</h2>

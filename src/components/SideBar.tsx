@@ -6,11 +6,13 @@ interface SideBarProps {
   isModalOpen: boolean;
   toggleBurguerMenu: () => void;
   collectionBooks: any[];
+  showBookDetails(books: any): void;
 }
 export function SideBar({
   isModalOpen,
   toggleBurguerMenu,
   collectionBooks,
+  showBookDetails,
 }: SideBarProps) {
   const [isListOpen, setIsListOpen] = useState(false);
 
@@ -34,8 +36,14 @@ export function SideBar({
         </button>
         {isListOpen && (
           <ul className={styles.list}>
-            {collectionBooks.map((book) => {
-              return <li>{book.volumeInfo.title}</li>;
+            {collectionBooks.map((book, i) => {
+              return (
+                <li key={i}>
+                  <button onClick={() => showBookDetails(book)}>
+                    {book.volumeInfo.title}
+                  </button>
+                </li>
+              );
             })}
           </ul>
         )}

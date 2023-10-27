@@ -11,9 +11,10 @@ import { getBookById } from "../api";
 type Props = {
   onSearch(title: string): void;
   fetchBooks: (title: string) => void;
+  showBookDetails(books: any): void;
 };
 
-const Navbar = ({ onSearch, fetchBooks }: Props) => {
+const Navbar = ({ onSearch, fetchBooks, showBookDetails }: Props) => {
   const { bookCollection } = useContext(FavoriteContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [collectionBooks, setCollectionBooks] = useState<any[]>([]);
@@ -49,6 +50,7 @@ const Navbar = ({ onSearch, fetchBooks }: Props) => {
           isModalOpen={isModalOpen}
           toggleBurguerMenu={toggleBurguerMenu}
           collectionBooks={collectionBooks}
+          showBookDetails={showBookDetails}
         />
         <div className={styles.links}>
           <h1>
@@ -57,14 +59,6 @@ const Navbar = ({ onSearch, fetchBooks }: Props) => {
           </h1>
           <SearchBar onSearch={onSearch} />
           <ul>
-            {/* <li>
-              <button onClick={() => fetchBooks("Javascript")}>Livros</button>
-            </li>
-            <li>
-              <button onClick={() => fetchCollectionBooks(bookCollection)}>
-                Coleção
-              </button>
-            </li> */}
             <li>
               <button onClick={toggleBurguerMenu}>
                 <List size={32} />
